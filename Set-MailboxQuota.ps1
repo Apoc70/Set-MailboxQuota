@@ -78,8 +78,8 @@ function Request-Choice {
 Set-StrictMode -Version Latest
 
 # IMPORT GLOBAL MODULE
-Import-Module BDRFunctions
-Import-Module BDRFunctions
+Import-Module GlobalFunctions
+
 $ScriptDir = Split-Path $script:MyInvocation.MyCommand.Path
 $ScriptName = $MyInvocation.MyCommand.Name
 $logger = New-Logger -ScriptRoot $ScriptDir -ScriptName $ScriptName -LogFileRetention 14
