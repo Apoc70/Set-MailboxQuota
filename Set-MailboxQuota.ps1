@@ -1,6 +1,6 @@
 <#
   .SYNOPSIS
-  Set default mailbox and mailbox database quotas per Exchange Server 2013 mailbox or mailbox database
+  Set default mailbox and mailbox database quotas per Exchange Server 2013/2016 mailbox or mailbox database
    
   Thomas Stensitzki
 	
@@ -13,7 +13,7 @@
 	
   .DESCRIPTION
 	
-  This script configures the IssueWarning, ProhibitSend and ProhibitSendAndReceive attributes for Exchange Server 2013 databases
+  This script configures the IssueWarning, ProhibitSend and ProhibitSendAndReceive attributes for Exchange Server 2013/2016 databases
 
   .NOTES 
   Requirements 
