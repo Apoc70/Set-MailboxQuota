@@ -77,7 +77,7 @@ Param(
 )
 
 # IMPORT GLOBAL FUNCTIONS MODULE
-Import-Module -Name BDRFunctions
+Import-Module -Name GlobalFunctions
 
 function Request-Choice {
   [CmdletBinding()]
