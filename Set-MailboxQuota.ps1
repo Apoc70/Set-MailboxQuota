@@ -1,13 +1,13 @@
 <#
     .SYNOPSIS
-    Set default mailbox quotas per Exchange Server 2013 mailbox
+    Set default mailbox quotas for an Exchange Server mailbox
    
     Thomas Stensitzki
 	
     THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. THE ENTIRE 
     RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
 	
-    Version 1.4, 2017-04-20
+    Version 1.5, 2019-04-14
 
     Ideas, comments and suggestions to support@granikos.eu 
 	
@@ -18,9 +18,9 @@
 
     .NOTES 
     Requirements 
-    - Windows Server 2012R2+
-    - Exchange Server 2013+ Managemeht Shell
-    - GlobalFunction Librry as desribed here: http://scripts.granikos.eu 
+    - Windows Server 2012R2 or newer
+    - Exchange Server 2013 or newer Management Shell
+    - GlobalFunction Librry as desribed here: https://go.granikos.eu/GlobalFunctions
 
     Revision History 
     -------------------------------------------------------------------------------- 
@@ -29,6 +29,7 @@
     1.2 Refactored to functions
     1.3 PowerShell hygiene
     1.4 Parameters reordered, PowerShell hygiene
+    1.5 Check for GlobalFunctions module availability added
 	
     .PARAMETER MailboxMaxSize  
     Maximum mailbox size (aka Prohibit Send and Receive) in GB
@@ -77,7 +78,16 @@ Param(
 )
 
 # IMPORT GLOBAL FUNCTIONS MODULE
-Import-Module -Name GlobalFunctions
+if (((Get-Module GlobalFunctions -ListAvailable)|Measure-Object).Count -eq 1) {
+  # Import GlobalFunction PowerShell module, if available)
+  Import-Module -Name GlobalFunctions
+}
+else {
+  # GlobalFunctions PowerShell module not available
+  Write-Warning -Message 'This script requires the GlobalFunctions module. Visit https://go.granikos.eu/GlobalFunctions to learn how to download and install the PowerShell module.' 
+  break 
+}
+
 
 function Request-Choice {
   [CmdletBinding()]

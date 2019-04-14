@@ -1,10 +1,10 @@
 # Set-MailboxQuota.ps1
 
-Set default mailbox and mailbox database quotas per Exchange Server 2013/2016 mailbox or mailbox database
+Set default mailbox and mailbox database quotas for an  Exchange Server mailbox or mailbox database
 
 ## Description
 
-This script configures the IssueWarning, ProhibitSend and ProhibitSendAndReceive attributes for Exchange Server 2013/2016 databases
+This script configures the IssueWarning, ProhibitSend and ProhibitSendAndReceive attributes for Exchange Server 2013/2016/2019 mailboxes or databases
 
 ## Parameters
 
