@@ -77,17 +77,16 @@ Param(
   [switch]$Archive
 )
 
-# IMPORT GLOBAL FUNCTIONS MODULE
-if (((Get-Module GlobalFunctions -ListAvailable)|Measure-Object).Count -eq 1) {
-  # Import GlobalFunction PowerShell module, if available)
+# Import GlobalFunctions
+if($null -ne (Get-Module -Name GlobalFunctions -ListAvailable).Version) {
   Import-Module -Name GlobalFunctions
 }
 else {
-  # GlobalFunctions PowerShell module not available
-  Write-Warning -Message 'This script requires the GlobalFunctions module. Visit https://go.granikos.eu/GlobalFunctions to learn how to download and install the PowerShell module.' 
-  break 
+  Write-Warning -Message 'Unable to load GlobalFunctions PowerShell module.'
+  Write-Warning -Message 'Open an administrative PowerShell session and run Import-Module GlobalFunctions'
+  Write-Warning -Message 'Please check http://bit.ly/GlobalFunctions for further instructions'
+  exit
 }
-
 
 function Request-Choice {
   [CmdletBinding()]
